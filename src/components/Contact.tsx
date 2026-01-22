@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, User, Phone } from 'lucide-react';
