@@ -14,21 +14,21 @@ const Contact: React.FC = () => {
     {
       icon: User,
       title: 'Mentor',
-      mainText: 'Mr. G. Krishan Teja - 9063098898',
+      mainText: 'Mr. G. Krishan Teja - 9182689778',
       subText: 'M.E, (Ph.D) – Automation & Robotics',
-      link: 'tel:+919063098898',
+      link: 'tel:+91 9182689778',
     },
     {
       icon: Phone,
       title: 'Phone',
       mainText: 'S AKHIL - 9063098898',
-      link: 'tel:+919063098898',
+      link: 'tel:+91 9063098898',
     },
     {
       icon: Phone,
       title: 'Phone',
       mainText: 'Y AJAY - 9391032771',
-      link: 'tel:+919391032771',
+      link: 'tel:+91 9391032771',
     },
     {
       icon: Mail,
