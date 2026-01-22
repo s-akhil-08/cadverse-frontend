@@ -10,7 +10,7 @@ const Contact: React.FC = () => {
     {
       icon: User,
       title: 'Mentor',
-      value: 'Mr. G. Krishan Teja - Assistant Professor',
+      value: 'Mr. G. Krishan Teja - M.E, (P.hD)-Automation & Robotics',
       link: ' ',
     },
     {
