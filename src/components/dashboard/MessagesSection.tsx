@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Send, MessageCircle, User, Phone } from 'lucide-react';
+import { Mail, Send, MessageCircle, User, Phone } from 'lucide-react';
 import Toast from '../Toast';
 import axios from 'axios';
 
@@ -11,7 +11,11 @@ const MessagesSection: React.FC = () => {
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [userName, setUserName] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [toast, setToast] = useState({ message: '', type: 'success' as 'success' | 'error', isVisible: false });
+  const [toast, setToast] = useState({
+    message: '',
+    type: 'success' as 'success' | 'error',
+    isVisible: false,
+  });
 
   // Fetch user email and name from localStorage or API
   useEffect(() => {
@@ -123,23 +127,22 @@ const MessagesSection: React.FC = () => {
       icon: User,
       title: 'Mentor',
       value: 'Mr. G. Krishan Teja - Assistant Professor',
-      link: ' ',
+      subText: 'M.E, (Ph.D) – Automation & Robotics',
+      link: '', // empty → not clickable
     },
     {
       icon: Phone,
       title: 'Phone',
       value: 'S AKHIL - 9063098898',
-      link: 'tel:+91 9063098898',
+      link: 'tel:+919063098898',
     },
-     
     {
       icon: Phone,
       title: 'Phone',
       value: 'Y AJAY - 9391032771',
-      link: 'tel:+91 9391032771',
+      link: 'tel:+919391032771',
     },
-    
-         {
+    {
       icon: Mail,
       title: 'Mail',
       value: 'cadverse.a@gmail.com',
@@ -161,6 +164,7 @@ const MessagesSection: React.FC = () => {
             Get In Touch
           </h2>
         </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div
@@ -168,9 +172,12 @@ const MessagesSection: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form id="tour-messages-form" onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -183,6 +190,7 @@ const MessagesSection: React.FC = () => {
                   placeholder="Tell us about your project..."
                 />
               </div>
+
               <button
                 type="submit"
                 disabled={isSubmitting || !userEmail || !userName}
@@ -206,8 +214,10 @@ const MessagesSection: React.FC = () => {
               </button>
             </form>
           </motion.div>
+
           {/* Contact Information */}
           <motion.div
+            id="tour-contact-info"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -217,29 +227,43 @@ const MessagesSection: React.FC = () => {
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
                 Contact Information
               </h3>
+
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
                       <info.icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                     </div>
+
                     <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white mb-1">{info.title}</h4>
-                      {info.link.startsWith('#') ? (
-                        <p className="text-gray-600 dark:text-gray-400 font-mono">{info.value}</p>
-                      ) : (
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
+                        {info.title}
+                      </h4>
+
+                      {info.link ? (
                         <a
                           href={info.link}
                           className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-mono transition-colors"
                         >
                           {info.value}
                         </a>
+                      ) : (
+                        <p className="text-blue-600 dark:text-blue-400 font-mono">
+                          {info.value}
+                        </p>
+                      )}
+
+                      {info.subText && (
+                        <p className="text-gray-600 dark:text-gray-400 text-sm mt-1 font-mono">
+                          {info.subText}
+                        </p>
                       )}
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+
             <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
               <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
                 Quick Response
@@ -252,6 +276,7 @@ const MessagesSection: React.FC = () => {
           </motion.div>
         </div>
       </motion.div>
+
       <Toast
         message={toast.message}
         type={toast.type}
