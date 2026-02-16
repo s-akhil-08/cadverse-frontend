@@ -112,12 +112,13 @@ Inside:
 
 ```
 
-VITE_API_BASE_URL=[http://localhost:8000](http://localhost:8000)
+VITE_API_BASE_URL=[http://localhost:8000]
 
 ```
 
 This helps other developers know what environment variables are required.
 
 ---
+
 
 
