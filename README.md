@@ -69,10 +69,8 @@ Set the following variables:
 
 ```env
 # 1. Main Backend API URL (for login, projects, feedback, uploads, SSE stream)
-VITE_BACKEND_URL=https://backend-ak.vercel.app/api/
+VITE_BACKEND_URL=https://cadverse-platform-backend.onrender.com/api/
 
-# 2. OTP Backend API URL (for signup OTP, verify OTP, forgot password, reset OTP, SMTP messages)
-VITE_OTP_BACKEND_URL=https://backend-ak.vercel.app/api/
 ```
 
 > **Note**: For local backend development, replace URLs with `http://127.0.0.1:8000/api/`.
@@ -110,8 +108,8 @@ npm run preview
 
 | Variable | Description | Default / Example |
 | :--- | :--- | :--- |
-| `VITE_BACKEND_URL` | Base URL for general backend services (Auth login, projects, feedback, SSE) | `https://backend-ak.vercel.app/api/` |
-| `VITE_OTP_BACKEND_URL` | Base URL for OTP and SMTP email services (Signup OTP, Verify OTP, Password Reset, Messages) | `https://backend-ak.vercel.app/api/` |
+| `VITE_BACKEND_URL` | Base URL for general backend services (Auth login, projects, feedback, SSE) | `https://cadverse-platform-backend.onrender.com/api/` |
+| `VITE_OTP_BACKEND_URL` | Base URL for OTP and SMTP email services (Signup OTP, Verify OTP, Password Reset, Messages) | `https://otp-service-django.vercel.app/api/` |
 
 ---
 
