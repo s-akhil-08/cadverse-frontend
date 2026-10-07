@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Star, Calendar, User } from 'lucide-react';
 import Navigation from '../components/Navigation';
+import { API_BASE_URL } from '../lib/api';
 
 interface Feedback {
   id: number;
@@ -25,7 +26,7 @@ const FeedbackDetail: React.FC = () => {
   useEffect(() => {
     const fetchFeedback = async () => {
       try {
-        const response = await fetch('https://backend-ak.vercel.app/feedback/');
+        const response = await fetch(`${API_BASE_URL}feedback/`);
         if (!response.ok) {
           throw new Error(`Failed to fetch feedback: ${response.status} ${response.statusText}`);
         }

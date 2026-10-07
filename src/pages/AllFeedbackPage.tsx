@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Star, Calendar, MessageSquare, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
+import { API_BASE_URL } from '../lib/api';
 
 interface Feedback {
   id: number;
@@ -25,7 +26,7 @@ const AllFeedbackPage: React.FC = () => {
     const fetchFeedback = async () => {
       try {
         // Add cache-busting query parameter
-        const response = await fetch('https://backend-ak.vercel.app/feedback/?t=' + new Date().getTime());
+        const response = await fetch(`${API_BASE_URL}feedback/?t=` + new Date().getTime());
         if (!response.ok) {
           throw new Error(`Failed to fetch feedback: ${response.status} ${response.statusText}`);
         }
