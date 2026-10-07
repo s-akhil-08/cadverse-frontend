@@ -138,36 +138,52 @@ const ProjectShowcase: React.FC = () => {
 
 
   useEffect(() => {
-    axios
-      .get(`${API_BASE_URL}feedback/`)
-      .then((res) => {
-        const allFeedback = res.data || [];
-        const approvedFeedback = allFeedback.filter((fb: any) => fb.is_approved);
-        const validRatings = approvedFeedback
-          .map((fb: any) => fb.rating)
-          .filter((r: any): r is number => typeof r === 'number' && r >= 1 && r <= 5);
-        const totalCount = validRatings.length;
-        const average = totalCount > 0
-          ? Number((validRatings.reduce((a: number, b: number) => a + b, 0) / totalCount).toFixed(1))
-          : 0;
-        setTotalFeedbacks(totalCount);
-        setAverageRating(average);
+    let isMounted = true;
 
-        axios.get(`${API_BASE_URL}showcase/`)
-          .then((showcaseRes) => {
-            const showcaseData = showcaseRes.data || [];
-            const itemsWithFeedback = showcaseData.filter((item: ShowcaseItem) => item.feedback);
-            setShowcaseItems(itemsWithFeedback.slice(0, 4));
-          })
-          .catch(() => {
-            setShowcaseItems([]);
-          });
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Failed to load feedback:", err);
-        setLoading(false);
-      });
+    const loadShowcaseData = async () => {
+      try {
+        const [feedbackRes, showcaseRes] = await Promise.allSettled([
+          axios.get(`${API_BASE_URL}feedback/`),
+          axios.get(`${API_BASE_URL}showcase/`)
+        ]);
+
+        if (!isMounted) return;
+
+        // Process Feedback stats
+        if (feedbackRes.status === 'fulfilled' && feedbackRes.value?.data) {
+          const allFeedback = Array.isArray(feedbackRes.value.data) ? feedbackRes.value.data : [];
+          const approvedFeedback = allFeedback.filter((fb: any) => fb.is_approved !== false);
+          const validRatings = approvedFeedback
+            .map((fb: any) => Number(fb.rating))
+            .filter((r: number) => !isNaN(r) && r >= 1 && r <= 5);
+
+          const totalCount = validRatings.length;
+          const average = totalCount > 0
+            ? Number((validRatings.reduce((a: number, b: number) => a + b, 0) / totalCount).toFixed(1))
+            : 0;
+
+          setTotalFeedbacks(totalCount);
+          setAverageRating(average);
+        }
+
+        // Process Showcase items
+        if (showcaseRes.status === 'fulfilled' && showcaseRes.value?.data) {
+          const showcaseData = Array.isArray(showcaseRes.value.data) ? showcaseRes.value.data : [];
+          const itemsWithFeedback = showcaseData.filter((item: any) => item.feedback);
+          setShowcaseItems(itemsWithFeedback.slice(0, 4));
+        }
+      } catch (err) {
+        console.error("Failed to load showcase data:", err);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+
+    loadShowcaseData();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const getRandomRotation = (index: number) => {
@@ -326,11 +342,11 @@ const ProjectShowcase: React.FC = () => {
                 const beforeRotation = getRandomRotation(index * 2);
                 const afterRotation = -getRandomRotation(index * 2 + 1);
                 const feedbackData = item.feedback ? {
-                  user: item.feedback.user.name,
-                  project: item.title || "CAD Project",
-                  rating: item.feedback.rating || 5,
+                  user: (item.feedback.user && typeof item.feedback.user === 'object' ? item.feedback.user.name : (item.feedback as any).user_name || (item.feedback as any).user || "Verified Client"),
+                  project: item.title || (item.feedback as any).project_title || "CAD Project",
+                  rating: Number(item.feedback.rating) || 5,
                   feedback_text: item.feedback.feedback_text || "Amazing work!",
-                  emojis: item.feedback.emojis || "amazing"
+                  emojis: item.feedback.emojis || "🚀 ⭐ 💯"
                 } : null;
                 return (
                   <motion.div

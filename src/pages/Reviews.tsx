@@ -28,45 +28,57 @@ const Reviews: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // First: Load ALL approved feedbacks for correct stats
-    axios.get(`${API_BASE_URL}feedback/`)
-      .then((feedbackRes) => {
-        const allFeedback = feedbackRes.data || [];
-        const approvedFeedback = allFeedback.filter((fb: any) => fb.is_approved);
+    let isMounted = true;
 
-        const validRatings = approvedFeedback
-          .map((fb: any) => fb.rating)
-          .filter((r: any): r is number => typeof r === 'number' && r >= 1 && r <= 5);
+    const loadReviewsData = async () => {
+      try {
+        const [feedbackRes, showcaseRes] = await Promise.allSettled([
+          axios.get(`${API_BASE_URL}feedback/`),
+          axios.get(`${API_BASE_URL}showcase/`)
+        ]);
 
-        const totalCount = validRatings.length;
-        const average = totalCount > 0
-          ? Number((validRatings.reduce((a: number, b: number) => a + b, 0) / totalCount).toFixed(1))
-          : 0;
+        if (!isMounted) return;
 
-        setTotalReviews(totalCount);
-        setAverageRating(average);
+        // Process Feedback stats
+        if (feedbackRes.status === 'fulfilled' && feedbackRes.value?.data) {
+          const allFeedback = Array.isArray(feedbackRes.value.data) ? feedbackRes.value.data : [];
+          const approvedFeedback = allFeedback.filter((fb: any) => fb.is_approved !== false);
 
-        // Second: Load showcase items for display (with before/after images)
-        return axios.get(`${API_BASE_URL}showcase/`);
-      })
-      .then((showcaseRes) => {
-        const allShowcase = showcaseRes.data || [];
+          const validRatings = approvedFeedback
+            .map((fb: any) => Number(fb.rating))
+            .filter((r: number) => !isNaN(r) && r >= 1 && r <= 5);
 
-        // Only show showcase items that have feedback (for visual consistency)
-        const validShowcase = allShowcase.filter((item: ShowcaseItem) =>
-          item.feedback &&
-          item.feedback.rating &&
-          item.feedback.feedback_text &&
-          item.feedback.user?.name
-        );
+          const totalCount = validRatings.length;
+          const average = totalCount > 0
+            ? Number((validRatings.reduce((a: number, b: number) => a + b, 0) / totalCount).toFixed(1))
+            : 0;
 
-        setReviews(validShowcase);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error loading data:", err);
-        setLoading(false);
-      });
+          setTotalReviews(totalCount);
+          setAverageRating(average);
+        }
+
+        // Process Showcase items
+        if (showcaseRes.status === 'fulfilled' && showcaseRes.value?.data) {
+          const allShowcase = Array.isArray(showcaseRes.value.data) ? showcaseRes.value.data : [];
+          const validShowcase = allShowcase.filter((item: any) =>
+            item.feedback &&
+            item.feedback.rating &&
+            item.feedback.feedback_text
+          );
+          setReviews(validShowcase);
+        }
+      } catch (err) {
+        console.error("Error loading reviews data:", err);
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+
+    loadReviewsData();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const handleBack = () => {
