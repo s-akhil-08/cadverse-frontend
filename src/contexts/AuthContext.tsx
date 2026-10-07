@@ -341,7 +341,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const sendMessage = async (subject: string, message: string): Promise<boolean> => {
     try {
-      const response = await axios.post(`${API_URL}send-message/`, { subject, message });
+      const response = await axios.post(`${OTP_URL}send-message/`, { subject, message });
       return response.status === 200;
     } catch {
       return false;

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, Send, MessageCircle, User, Phone } from 'lucide-react';
 import Toast from '../Toast';
 import axios from 'axios';
+import { API_BASE_URL, OTP_API_BASE_URL } from '../../lib/api';
 
 const MessagesSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -37,12 +38,13 @@ const MessagesSection: React.FC = () => {
       const token = localStorage.getItem('token');
       if (token) {
         axios
-          .get('https://server-message-1.vercel.app/api/user/', {
+          .get(`${API_BASE_URL}protected/`, {
             headers: { Authorization: `Token ${token}` },
           })
           .then((response) => {
-            setUserEmail(response.data.email || null);
-            setUserName(response.data.name || null);
+            const user = response.data.user || response.data;
+            setUserEmail(user.email || null);
+            setUserName(user.name || null);
           })
           .catch(() => {
             setToast({
@@ -92,7 +94,7 @@ const MessagesSection: React.FC = () => {
 
     try {
       setIsSubmitting(true);
-      const res = await fetch('https://server-message-1.vercel.app/contact', {
+      const res = await fetch(`${OTP_API_BASE_URL}contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
