@@ -4,6 +4,7 @@ import { Star, ArrowRight, MessageSquare } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import AuthModal from './AuthModal';
+import { API_BASE_URL } from '../lib/api';
 
 interface Feedback {
   id: number;
@@ -103,7 +104,7 @@ const Feedback: React.FC = () => {
     const fetchFeedback = async () => {
       try {
         // Add cache-busting query parameter
-        const response = await fetch('https://backend-is8n.onrender.com/api/feedback/?t=' + new Date().getTime());
+        const response = await fetch(`${API_BASE_URL}feedback/?t=` + new Date().getTime());
         if (!response.ok) {
           throw new Error(`Failed to fetch feedback: ${response.status} ${response.statusText}`);
         }

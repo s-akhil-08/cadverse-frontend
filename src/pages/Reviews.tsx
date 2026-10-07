@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Quote, Sparkles, Star, TrendingUp } from 'lucide-react';
 import axios from 'axios';
 import { SkeletonGrid } from '../components/Skeleton'; // ← Only this line added
+import { API_BASE_URL } from '../lib/api';
 
 interface ShowcaseItem {
   id: number;
@@ -28,7 +29,7 @@ const Reviews: React.FC = () => {
 
   useEffect(() => {
     // First: Load ALL approved feedbacks for correct stats
-    axios.get('https://backend-is8n.onrender.com/api/feedback/')
+    axios.get(`${API_BASE_URL}feedback/`)
       .then((feedbackRes) => {
         const allFeedback = feedbackRes.data || [];
         const approvedFeedback = allFeedback.filter((fb: any) => fb.is_approved);
@@ -46,7 +47,7 @@ const Reviews: React.FC = () => {
         setAverageRating(average);
 
         // Second: Load showcase items for display (with before/after images)
-        return axios.get('https://backend-is8n.onrender.com/api/showcase/');
+        return axios.get(`${API_BASE_URL}showcase/`);
       })
       .then((showcaseRes) => {
         const allShowcase = showcaseRes.data || [];

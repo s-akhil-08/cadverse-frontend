@@ -5,6 +5,7 @@ import { ArrowRight, Sparkles, MessageSquare } from 'lucide-react';
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 import AuthModal from './AuthModal';
+import { API_BASE_URL } from '../lib/api';
 
 interface Feedback {
   user: string;
@@ -138,7 +139,7 @@ const ProjectShowcase: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get('https://backend-is8n.onrender.com/api/feedback/')
+      .get(`${API_BASE_URL}feedback/`)
       .then((res) => {
         const allFeedback = res.data || [];
         const approvedFeedback = allFeedback.filter((fb: any) => fb.is_approved);
@@ -152,11 +153,14 @@ const ProjectShowcase: React.FC = () => {
         setTotalFeedbacks(totalCount);
         setAverageRating(average);
 
-        axios.get('https://backend-is8n.onrender.com/api/showcase/')
+        axios.get(`${API_BASE_URL}showcase/`)
           .then((showcaseRes) => {
             const showcaseData = showcaseRes.data || [];
             const itemsWithFeedback = showcaseData.filter((item: ShowcaseItem) => item.feedback);
             setShowcaseItems(itemsWithFeedback.slice(0, 4));
+          })
+          .catch(() => {
+            setShowcaseItems([]);
           });
         setLoading(false);
       })
