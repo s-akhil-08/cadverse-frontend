@@ -47,8 +47,8 @@ A modern, high-performance web application for showcasing CAD engineering projec
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/s-akhil-08/cadverse-frontend1.git
-cd cadverse-frontend1
+git clone https://github.com/s-akhil-08/cadverse-frontend.git
+cd cadverse-frontend
 ```
 
 ### 2️⃣ Install Dependencies
@@ -143,4 +143,4 @@ npm run preview
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](https://github.com/s-akhil-08/cadverse-frontend1/blob/main/LICENSE).
+This project is open source and available under the [MIT License](https://github.com/s-akhil-08/cadverse-frontend/blob/main/LICENSE).
