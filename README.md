@@ -9,7 +9,6 @@ A modern, high-performance web application for showcasing CAD engineering projec
 ### 🔐 Dual-Backend & Secure Authentication
 - **Dual-Backend Architecture**: Seamlessly routes general API traffic (projects, status, feedback) and dedicated OTP/SMTP mail traffic (signup OTP, reset passwords, notifications) to distinct microservices.
 - **Email & OTP Verification**: 6-digit email OTP verification for secure account creation and forgot-password flows.
-- **Google OAuth Integration**: One-click Google Sign-In powered by Supabase Auth.
 - **Token-Based Protected Routes**: Secure JWT/Token session persistence and authenticated dashboard routes.
 
 ### 📐 CAD Portfolio & Interactive Showcase
@@ -144,4 +143,4 @@ npm run preview
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the [MIT License](https://github.com/s-akhil-08/cadverse-frontend1/blob/main/LICENSE).
