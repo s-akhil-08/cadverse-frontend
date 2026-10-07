@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, Calendar, CheckCircle, Clock, XCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import axios from 'axios';
+import { API_BASE_URL } from '../../lib/api';
 
 interface UserFeedback {
   id: number;
@@ -14,7 +15,7 @@ interface UserFeedback {
   approvalStatus: 'approved' | 'pending' | 'rejected';
 }
 
-const API_URL = 'https://backend-ak.vercel.app/api/';
+const API_URL = API_BASE_URL;
 
 const FeedbackStatusList: React.FC = () => {
   const [expandedId, setExpandedId] = useState<number | null>(null);

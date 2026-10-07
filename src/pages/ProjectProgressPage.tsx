@@ -4,6 +4,7 @@ import { ArrowLeft, Calendar, FileText, Clock, CheckCircle, AlertCircle, Setting
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import DashboardHeader from '../components/dashboard/DashboardHeader';
+import { API_BASE_URL } from '../lib/api';
 
 const ProjectProgressPage: React.FC = () => {
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ const ProjectProgressPage: React.FC = () => {
       setLoading(false);
     } else {
       // If not found, fetch it directly from backend using project_detail API
-      fetch(`https://backend-ak.vercel.app/projects/${projectId}/`, {
+      fetch(`${API_BASE_URL}projects/${projectId}/`, {
         headers: {
           Authorization: `Token ${localStorage.getItem("authToken")}`
         }
@@ -58,7 +59,7 @@ const ProjectProgressPage: React.FC = () => {
     }
 
     // Subscribe to SSE for real-time status updates
-    const eventSource = new EventSource('https://backend-ak.vercel.app/api/project-status-stream/');
+    const eventSource = new EventSource(`${API_BASE_URL}project-status-stream/`);
     eventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
       if (String(data.id) === String(projectId)) {

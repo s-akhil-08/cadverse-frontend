@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Star, MessageSquare, Send, ChevronDown } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import Toast from '../Toast';
+import { API_BASE_URL } from '../../lib/api';
 
 const FeedbackSection: React.FC = () => {
   const { user, projects } = useAuth();
@@ -80,7 +81,7 @@ const FeedbackSection: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://backend-ak.vercel.app/api/submit-feedback/', {
+      const response = await fetch(`${API_BASE_URL}submit-feedback/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

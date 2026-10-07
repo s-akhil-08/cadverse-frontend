@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from '../lib/api';
 
 interface Feedback {
   id: number;
@@ -15,7 +16,7 @@ interface UseFeedbackApprovalNotificationReturn {
   projectName: string | null;
 }
 
-const API_URL = 'https://backend-ak.vercel.app/api/';
+const API_URL = API_BASE_URL;
 
 export const useFeedbackApprovalNotification = (
   userId: string | null

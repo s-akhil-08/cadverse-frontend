@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { supabase } from '../lib/supabaseClient'; // Add this
+import { API_BASE_URL, OTP_API_BASE_URL } from '../lib/api';
 
 interface User {
   id: string;
@@ -49,7 +50,8 @@ export const useAuth = (): AuthContextType => {
   return context;
 };
 
-const API_URL = 'https://backend-ak.vercel.app/api/'; // Keep for Django endpoints
+const API_URL = API_BASE_URL; // Main backend endpoints
+const OTP_URL = OTP_API_BASE_URL; // OTP send and verify endpoints
 
 axios.interceptors.request.use(
   (config) => {
@@ -272,7 +274,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signup = async (formData: any): Promise<boolean> => {
     try {
-      const response = await axios.post(`${API_URL}signup/`, formData);
+      const response = await axios.post(`${OTP_URL}signup/`, formData);
       return response.status === 201;
     } catch {
       return false;
@@ -281,7 +283,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const verifyOTP = async (email: string, otp: string): Promise<boolean> => {
     try {
-      const response = await axios.post(`${API_URL}verify-otp/`, { email, otp });
+      const response = await axios.post(`${OTP_URL}verify-otp/`, { email, otp });
       if (response.status === 200) {
         const { token, user } = response.data;
         localStorage.setItem('token', token);
@@ -365,7 +367,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const forgotPassword = async (email: string): Promise<boolean> => {
     try {
-      const response = await axios.post(`${API_URL}forgot-password/`, { email });
+      const response = await axios.post(`${OTP_URL}forgot-password/`, { email });
       if (response.status === 200) {
         console.log('Forgot password OTP sent:', response.data);
         return true;
@@ -379,7 +381,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const verifyForgotPasswordOTPForget = async (email: string, otp: string): Promise<boolean> => {
     try {
-      const response = await axios.post(`${API_URL}verify-reset-otp/`, { email, otp });
+      const response = await axios.post(`${OTP_URL}verify-reset-otp/`, { email, otp });
       if (response.status === 200) {
         console.log('Forgot password OTP verification successful:', response.data);
         return true;
@@ -394,7 +396,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const resetPassword = async (email: string, otp: string, newPassword: string): Promise<boolean> => {
     try {
       // Step 1: Verify OTP first to get the reset_token
-      const verifyResponse = await axios.post(`${API_URL}verify-reset-otp/`, {
+      const verifyResponse = await axios.post(`${OTP_URL}verify-reset-otp/`, {
         email,
         otp,
       });
@@ -414,7 +416,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.log('Using reset_token for reset:', resetToken);
 
       // Step 3: Reset password using reset_token
-      const response = await axios.post(`${API_URL}reset-password/`, {
+      const response = await axios.post(`${OTP_URL}reset-password/`, {
         email,
         reset_token: resetToken,
         new_password: newPassword,
