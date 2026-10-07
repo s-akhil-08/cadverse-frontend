@@ -455,8 +455,12 @@ const Reviews: React.FC = () => {
 
                           <div className="relative z-10">
                             <div className="mb-4">
-                              <div className="font-bold text-2xl text-gray-900 dark:text-white mb-1">{feedback.user.name}</div>
-                              <div className="text-sm text-gray-600 dark:text-gray-400 font-mono">Client Project</div>
+                              <div className="font-bold text-2xl text-gray-900 dark:text-white mb-1">
+                                {feedback.user && typeof feedback.user === 'object' ? feedback.user.name : (feedback as any).user_name || (feedback as any).user || "Verified Client"}
+                              </div>
+                              <div className="text-sm text-gray-600 dark:text-gray-400 font-mono">
+                                {item.title || (feedback as any).project_name || "Client Project"}
+                              </div>
                             </div>
                             <div className="relative mb-4">
                               <span className="absolute -top-2 -left-2 text-5xl text-blue-400 dark:text-blue-500 opacity-50 font-serif">"</span>

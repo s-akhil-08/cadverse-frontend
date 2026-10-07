@@ -169,8 +169,8 @@ const ProjectShowcase: React.FC = () => {
         // Process Showcase items
         if (showcaseRes.status === 'fulfilled' && showcaseRes.value?.data) {
           const showcaseData = Array.isArray(showcaseRes.value.data) ? showcaseRes.value.data : [];
-          const itemsWithFeedback = showcaseData.filter((item: any) => item.feedback);
-          setShowcaseItems(itemsWithFeedback.slice(0, 4));
+          const validShowcase = showcaseData.filter((item: any) => item.before_file && item.after_file);
+          setShowcaseItems(validShowcase.length > 0 ? validShowcase.slice(0, 4) : showcaseData.slice(0, 4));
         }
       } catch (err) {
         console.error("Failed to load showcase data:", err);
