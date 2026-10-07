@@ -1,6 +1,6 @@
 # 🌐 CADverse — Engineering Portfolio & Project Tracking Platform
 
-A modern, high-performance web application for showcasing CAD engineering projects, submitting design requests, and tracking project lifecycles in real time. Built with **React 18**, **TypeScript**, **Vite**, **Tailwind CSS**, and **Framer Motion**, backed by a scalable **Dual-Backend Architecture** (Django REST Framework + Dedicated OTP / SMTP Service) and **Supabase Authentication**.
+A modern, high-performance web application for showcasing CAD engineering projects, submitting design requests, and tracking project lifecycles in real time. Built with **React 18**, **TypeScript**, **Vite**, **Tailwind CSS**, and **Framer Motion**, backed by a scalable **Dual-Backend Architecture** (Django REST Framework + Dedicated OTP / SMTP Service) with secure token-based authentication.
 
 ---
 
@@ -38,7 +38,7 @@ A modern, high-performance web application for showcasing CAD engineering projec
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [Lucide React Icons](https://lucide.dev/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **HTTP Client**: [Axios](https://axios-http.com/) + Native Fetch
-- **Authentication**: [Supabase Auth](https://supabase.com/) & Django Token Auth
+- **Authentication**: Django REST Token Auth + Dedicated OTP Email Service
 
 ---
 
@@ -47,8 +47,8 @@ A modern, high-performance web application for showcasing CAD engineering projec
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/s-akhil-08/cadverse-frontend.git
-cd cadverse-frontend
+git clone https://github.com/s-akhil-08/cadverse-frontend1.git
+cd cadverse-frontend1
 ```
 
 ### 2️⃣ Install Dependencies
