@@ -20,7 +20,7 @@ export interface Feedback {
 export const feedbackData: Feedback[] = [
   {
     id: 1,
-    userName: "Sarah Johnson",
+    userName: "Pooja Sharma",
     userAvatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
     message: "CADverse transformed our rough sketches into production-ready models with incredible precision. Their attention to detail exceeded our expectations!",
     rating: 5,
@@ -42,7 +42,7 @@ export const feedbackData: Feedback[] = [
   },
   {
     id: 2,
-    userName: "Michael Chen",
+    userName: "Rahul Deshmukh",
     userAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
     message: "Outstanding prototype quality! CADverse helped us validate our concept quickly and efficiently, saving months in development.",
     rating: 5,
@@ -64,9 +64,9 @@ export const feedbackData: Feedback[] = [
   },
   {
     id: 3,
-    userName: "Emma Rodriguez",
+    userName: "Priya Nair",
     userAvatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
-    message: "The architectural models were incredibly detailed. The quality of visualization was exceptional and helped secure project approval!",
+    message: "The aerodynamic fairing models were incredibly detailed. The quality of visualization was exceptional and helped secure project approval!",
     rating: 5,
     emojis: ["🏗️", "✨", "👏"],
     date: "2024-01-10",
@@ -86,7 +86,7 @@ export const feedbackData: Feedback[] = [
   },
   {
     id: 4,
-    userName: "Dr. James Wilson",
+    userName: "Dr. Rajesh Kulkarni",
     userAvatar: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&h=100&fit=crop&crop=face",
     message: "CADverse's expertise in precision engineering was invaluable. Their attention to detail helped us accelerate our development process significantly.",
     rating: 5,
@@ -108,7 +108,7 @@ export const feedbackData: Feedback[] = [
   },
   {
     id: 5,
-    userName: "Robert Martinez",
+    userName: "Vikram Singhania",
     userAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
     message: "The industrial equipment design exceeded our expectations. CADverse's engineering expertise made this project a complete success!",
     rating: 4,
@@ -130,7 +130,7 @@ export const feedbackData: Feedback[] = [
   },
   {
     id: 6,
-    userName: "Lisa Thompson",
+    userName: "Kavita Reddy",
     userAvatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face",
     message: "CADverse delivered aerospace-grade precision and quality. Their understanding of requirements was exceptional!",
     rating: 5,
@@ -152,7 +152,7 @@ export const feedbackData: Feedback[] = [
   },
   {
     id: 7,
-    userName: "Alex Kumar",
+    userName: "Arjun Kumar",
     userAvatar: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&h=100&fit=crop&crop=face",
     message: "Amazing work on our prototype! The team understood our vision perfectly and delivered beyond expectations.",
     rating: 5,
@@ -173,7 +173,7 @@ export const feedbackData: Feedback[] = [
   },
   {
     id: 8,
-    userName: "Maria Garcia",
+    userName: "Ananya Verma",
     userAvatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face",
     message: "Professional service with excellent communication throughout the project. Highly recommend CADverse!",
     rating: 4,

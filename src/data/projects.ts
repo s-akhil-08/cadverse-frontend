@@ -48,9 +48,9 @@ export const projects: Project[] = [
     ],
     testimonial: {
       text: "CADverse transformed our rough sketches into production-ready models with incredible precision. Their attention to detail and understanding of automotive requirements exceeded our expectations. The project was delivered on time and within budget.",
-      author: "Sarah Johnson",
+      author: "Pooja Sharma",
       position: "Lead Engineer",
-      company: "AutoTech Industries",
+      company: "Tata Advanced Systems",
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
     },
     stats: {
@@ -82,10 +82,10 @@ The project involved complete modeling of all major landing gear components: str
       
     ],
     testimonial: {
-      text: "CADverse transformed our rough sketches into production-ready models with incredible precision. Their attention to detail and understanding of automotive requirements exceeded our expectations. The project was delivered on time and within budget.",
-      author: "Sarah Johnson",
+      text: "CADverse transformed our rough sketches into production-ready models with incredible precision. Their attention to detail and understanding of aerospace requirements exceeded our expectations. The project was delivered on time and within budget.",
+      author: "Pooja Sharma",
       position: "Lead Engineer",
-      company: "AutoTech Industries",
+      company: "Tata Advanced Systems",
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
     },
     stats: {
@@ -94,10 +94,6 @@ The project involved complete modeling of all major landing gear components: str
       deliverables: "15 components"
     }
   },
-
-
-
-
 
   {
     id: 3,
@@ -120,10 +116,10 @@ The project also considered in-depth CFD analysis using ANSYS to study airflow p
       '/images/projects/archimedes/pressure%20800x600.png'
     ],
     testimonial: {
-      text: "The prototype quality was outstanding. CADverse helped us validate our concept quickly and efficiently, saving months in our development timeline. Their expertise in electronics housing design was invaluable.",
-      author: "Michael Chen",
+      text: "The prototype quality was outstanding. CADverse helped us validate our concept quickly and efficiently, saving months in our development timeline. Their expertise in renewable aerodynamic design was invaluable.",
+      author: "Rahul Deshmukh",
       position: "Product Manager",
-      company: "TechFlow Solutions",
+      company: "CleanTech Solutions India",
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
     },
     stats: {
@@ -153,10 +149,10 @@ Being the most important aspect of the project, the fairing was designed and stu
       '/images/projects/truck/fairing%20multiview%20800x600.png'
     ],
     testimonial: {
-      text: "The architectural models were incredibly detailed and helped us secure project approval from stakeholders. The quality of visualization was exceptional and the VR walkthrough was a game-changer for client presentations.",
-      author: "Emma Rodriguez",
-      position: "Senior Architect",
-      company: "Design Studio Pro",
+      text: "The aerodynamic models were incredibly detailed and helped us secure project approval from stakeholders. The quality of visualization was exceptional and the CFD simulation analysis was a game-changer for presentations.",
+      author: "Priya Nair",
+      position: "Senior Design Lead",
+      company: "Mahindra Engineering Studio",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
     },
     stats: {
@@ -187,10 +183,10 @@ The components modeled in this project are the 5th stage compressor rotor blade,
       '/images/projects/impellor/impeller%20iso%20400x300.png'
     ],
     testimonial: {
-      text: "CADverse's expertise in medical device prototyping was invaluable. Their attention to regulatory requirements and precision manufacturing helped us accelerate our development process while maintaining the highest safety standards.",
-      author: "Dr. James Wilson",
+      text: "CADverse's expertise in aerospace turbine blade modeling was invaluable. Their attention to thermal analysis requirements and precision manufacturing helped us accelerate our research while maintaining high engineering standards.",
+      author: "Dr. Rajesh Kulkarni",
       position: "Chief Technology Officer",
-      company: "MedTech Innovations",
+      company: "AeroSpace Dynamics India",
       avatar: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&h=100&fit=crop&crop=face"
     },
     stats: {
@@ -220,9 +216,9 @@ Dimensional parameters such as the diameter of the pin, thickness of the eye, an
  ],
     testimonial: {
       text: "The industrial equipment design exceeded our expectations. CADverse's engineering expertise and attention to safety standards made this project a complete success. The equipment has been running flawlessly for months.",
-      author: "Robert Martinez",
+      author: "Vikram Singhania",
       position: "Operations Director",
-      company: "Heavy Industries Corp",
+      company: "L&T Heavy Engineering",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
     },
     stats: {
@@ -250,10 +246,10 @@ This project looks into various mechanical components cooperating for load handl
       '/images/projects/crane%20%20hook/crane%20hook%20isometric%20view%20800x600.png'
     ],
     testimonial: {
-      text: "CADverse delivered aerospace-grade precision and quality. Their understanding of aerospace requirements and attention to detail was exceptional. The components passed all certification tests on the first attempt.",
-      author: "Captain Lisa Thompson",
-      position: "Chief Engineer",
-      company: "AeroSpace Dynamics",
+      text: "CADverse delivered aerospace-grade precision and quality. Their understanding of structural requirements and attention to detail was exceptional. The components passed all certification tests on the first attempt.",
+      author: "Kavita Reddy",
+      position: "Chief Aviation Engineer",
+      company: "HAL Aerospace Systems",
       avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face"
     },
     stats: {
@@ -280,11 +276,11 @@ This project looks into various mechanical components cooperating for load handl
       '/images/projects/pneumatic%20motor/iso%20800x600.png'
     ],
     testimonial: {
-      text: "CADverse delivered aerospace-grade precision and quality. Their understanding of aerospace requirements and attention to detail was exceptional. The components passed all certification tests on the first attempt.",
-      author: "Captain Lisa Thompson",
-      position: "Chief Engineer",
-      company: "AeroSpace Dynamics",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face"
+      text: "CADverse delivered industrial-grade precision and quality. Their understanding of pneumatic components and motion assembly was exceptional. Highly recommended for complex CAD assemblies.",
+      author: "Arjun Kumar",
+      position: "Robotics Lead",
+      company: "RoboDynamics India",
+      avatar: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&h=100&fit=crop&crop=face"
     },
     stats: {
       duration: "10 months",
