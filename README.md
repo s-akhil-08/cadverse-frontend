@@ -141,4 +141,4 @@ npm run preview
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](https://github.com/s-akhil-08/cadverse-frontend/blob/main/LICENSE).
+This project is **open source**. Feel free to use, modify, and distribute it for personal or commercial purposes, in accordance with the license terms.
