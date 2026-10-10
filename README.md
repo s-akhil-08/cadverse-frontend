@@ -141,4 +141,4 @@ npm run preview
 
 ## 📄 License
 
-This project is **open source**. Feel free to use, modify, and distribute it for personal or commercial purposes, in accordance with the license terms.
+This project is **open source**. Anyone is free to **use, modify, and distribute** it.
